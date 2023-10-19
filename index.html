@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+    
+    <form id="surveyForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" id="firstName" required>
+        </div>
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" id="lastName" required>
+        </div>
+        <div class="form-group">
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required>
+        </div>
+        <div class="form-group">
+            <label>Country:</label>
+            <select id="country" required>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Gender:</label>
+            <label><input type="checkbox" id="male" name="gender"> Male</label>
+            <label><input type="checkbox" id="female" name="gender"> Female</label>
+        </div>
+        <div class="form-group">
+            <label>Profession:</label>
+            <input type="text" id="profession" required>
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label>Mobile Number:</label>
+            <input type="tel" id="mobile" required>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            // Fetching all the form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const dob = document.getElementById('dob').value;
+            const country = document.getElementById('country').value;
+            const profession = document.getElementById('profession').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : "";
+
+            // Displaying a popup with the form values
+            alert(`First Name: ${firstName}
+Last Name: ${lastName}
+Date of Birth: ${dob}
+Country: ${country}
+Profession: ${profession}
+Email: ${email}
+Mobile Number: ${mobile}
+Gender: ${gender}`);
+
+            // Resetting the form
+            document.getElementById('surveyForm').reset();
+        }
+
+        function resetForm() {
+            document.getElementById('surveyForm').reset();
+        }
+    </script>
+    </center>
+</body>
+
+</html>
